@@ -1,0 +1,81 @@
+#skills { background: var(--surface); }
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1px;
+  border: 1px solid var(--border);
+}
+
+.skill-card {
+  background: var(--card);
+  padding: 2rem 1.6rem;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.3s;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--card-accent, var(--accent)), transparent);
+    transform: scaleX(0);
+    transition: transform 0.4s;
+  }
+
+  &:hover {
+    background: rgba(0,229,255,0.04);
+    &::before { transform: scaleX(1); }
+    .skill-bar { filter: brightness(1.2); }
+  }
+}
+
+.skill-icon {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+  display: block;
+}
+
+.skill-name {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.skill-desc {
+  font-size: 0.72rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.skill-bar-wrap {
+  margin-top: 1rem;
+  height: 2px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.skill-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  border-radius: 2px;
+  /* Animate in when parent reveals */
+  animation: growBar 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.3s both;
+  transform-origin: left;
+}
+
+@keyframes growBar {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+.skill-level {
+  font-size: 0.62rem;
+  color: var(--muted);
+  text-align: right;
+  margin-top: 0.3rem;
+  letter-spacing: 0.06em;
+}

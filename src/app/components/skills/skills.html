@@ -1,0 +1,18 @@
+<section id="skills">
+    <div class="section-label">Expertise</div>
+    <h2 class="section-title">Tech <span>Stack</span></h2>
+    <!-- [revealDelay]="i * 80" -->
+    <div class="skills-grid">
+        <div *ngFor="let skill of skills; let i = index" class="skill-card" appScrollReveal
+            [style.--card-accent]="skill.accentColor">
+            <!-- <span class="skill-icon">{{ skill.icon }}</span> -->
+            <img [src]="skill.icon" alt="skill.name" class="skill-icon">
+            <div class="skill-name">{{ skill.name }}</div>
+            <div class="skill-desc">{{ skill.description }}</div>
+            <!-- <div class="skill-bar-wrap">
+                <div class="skill-bar" [style.width.%]="skill.level"></div>
+            </div>
+            <div class="skill-level">{{ skill.level }}%</div> -->
+        </div>
+    </div>
+</section>

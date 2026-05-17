@@ -1,0 +1,105 @@
+<section id="contact">
+
+  <div class="section-label">Get In Touch</div>
+  <h2 class="section-title">Let's <span>Connect</span></h2>
+
+  <p class="contact-sub">
+    Got a project in mind or Looking to bring me on board?<br>
+    Drop a message — I'll get back to you.
+  </p>
+
+  <div class="container">
+
+    <!-- LEFT SIDE: CONTACT INFO -->
+    <div class="contact-container">
+      <div class="card">
+        <span class="contact-text">Contact Me</span>
+        <span class="copy-hint">{{ contact.number }}</span>
+      </div>
+
+      <div class="email-wrap card" (click)="copyEmail()">
+        <span class="contact-text">Email</span>
+        <span class="email-hint email-text">{{ contact.email }}</span>
+        <span class="copy-hint">
+          {{ copied ? '✓ Copied!' : 'Click to copy' }}
+        </span>
+      </div>
+
+      <div class="card">
+        <span class="contact-text">Location</span>
+        <span class="copy-hint">{{ contact.location }}</span>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE: FORM -->
+    <div class="contact-container">
+      <form class="contact-form" (ngSubmit)="onSubmit()">
+
+        <div class="input-group">
+          <input type="text" id="name" placeholder=" " [(ngModel)]="formData.name" name="name" required />
+          <label for="name">Your Name</label>
+          <div class="input-line"></div>
+        </div>
+
+        <div class="input-group">
+          <input type="email" id="email" placeholder=" " [(ngModel)]="formData.email" name="email" required />
+          <label for="email">Your Email</label>
+          <div class="input-line"></div>
+        </div>
+
+        <div class="input-group">
+          <textarea id="message" placeholder=" " [(ngModel)]="formData.message" name="message" required
+            rows="4"></textarea>
+          <label for="message">Message</label>
+          <div class="input-line"></div>
+        </div>
+
+        <button class="send-btn" type="submit"
+          [disabled]="!formData.name || !formData.email || !formData.message || sending">
+          <ng-container *ngIf="!sending && !sent && !failed">
+            <span>Send Message</span>
+            <lucide-icon [img]="Send" [size]="16"></lucide-icon>
+          </ng-container>
+
+          <ng-container *ngIf="sending">
+            <span>Sending...</span>
+            <div class="spinner"></div>
+          </ng-container>
+
+          <ng-container *ngIf="sent">
+            <span>Sent!</span>
+            <lucide-icon [img]="CheckCircle" [size]="16"></lucide-icon>
+          </ng-container>
+
+          <ng-container *ngIf="failed">
+            <span>Failed</span>
+            <lucide-icon [img]="XCircle" [size]="16"></lucide-icon>
+          </ng-container>
+        </button>
+
+      </form>
+    </div>
+
+  </div>
+
+  <!-- SOCIAL LINKS -->
+  <div class="social-links">
+    <a class="social-link" href="https://github.com/kumaragurubaran-c" target="_blank">GitHub</a>
+    <span class="divider">/</span>
+    <a class="social-link" href="https://www.linkedin.com/in/kumaragurubaran-c-7a7a0b1b6" target="_blank">LinkedIn</a>
+    <span class="divider">/</span>
+    <a class="social-link" href="Kumaragurubaran_C_Resume.pdf" target="_blank">Resume PDF</a>
+  </div>
+
+  <!-- corner toast -->
+  <div class="toast" [class.show]="toastVisible" [class.error]="toastError">
+    <div class="toast-icon">
+      <lucide-icon [img]="toastError ? XCircle : CheckCircle" [size]="18"></lucide-icon>
+    </div>
+    <div class="toast-body">
+      <div class="toast-title">{{ toastError ? 'Failed!' : 'Success!' }}</div>
+      <div class="toast-msg">{{ toastMessage }}</div>
+    </div>
+  </div>
+
+</section>

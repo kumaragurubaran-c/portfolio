@@ -1,0 +1,17 @@
+<section id="projects">
+    <div class="section-label">Work</div>
+    <h2 class="section-title">Featured <span>Projects</span></h2>
+
+    <!-- [revealDelay]="i * 90" -->
+    <div class="projects-grid">
+        <div *ngFor="let project of projects; let i = index" class="project-card" appScrollReveal>
+            <div class="project-num">{{ project.number }}</div>
+            <div class="project-category">{{ project.category }}</div>
+            <div class="project-title">{{ project.title }}</div>
+            <div class="project-desc">{{ project.description }}</div>
+            <div class="project-stack">
+                <span *ngFor="let tech of project.stack" class="stack-badge">{{ tech }}</span>
+            </div>
+        </div>
+    </div>
+</section>

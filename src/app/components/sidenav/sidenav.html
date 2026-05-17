@@ -1,0 +1,13 @@
+<nav class="sidenav">
+    <div
+      *ngFor="let item of navItems"
+      class="nav-item"
+      [class.active]="activeSection === item.id"
+      (click)="scrollTo(item.id)"
+    >
+      <div class="nav-icon">
+        <lucide-icon [img]="item.icon" [size]="20"></lucide-icon>
+      </div>
+      <span class="nav-tooltip">{{ item.label }}</span>
+    </div>
+  </nav>

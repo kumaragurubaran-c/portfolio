@@ -1,0 +1,87 @@
+.sidenav {
+    position: fixed;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    z-index: 100;
+    background: rgba(12, 17, 32, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    border-radius: 40px;
+    padding: 1rem 0.6rem;
+  }
+  
+  .nav-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    color: var(--muted);
+    transition: all 0.3s ease;
+  
+    &:hover {
+      color: var(--accent);
+      border-color: var(--border);
+      background: rgba(0, 229, 255, 0.06);
+      box-shadow: 0 4px 20px rgba(0, 229, 255, 0.15);
+      transform: translateY(-2px);          /* ← lift effect */
+  
+      .nav-tooltip { opacity: 1; transform: translateX(-8px); }
+    }
+  
+    &.active {
+      color: var(--accent);
+      border-color: rgba(0, 229, 255, 0.4);
+      background: rgba(0, 229, 255, 0.08);
+      box-shadow:
+        0 0 0 1px rgba(0, 229, 255, 0.2),
+        0 8px 24px rgba(0, 229, 255, 0.25),  /* ← lift box shadow */
+        0 0 20px rgba(0, 229, 255, 0.1);
+      transform: translateY(-2px);
+    }
+  }
+  
+  .nav-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .nav-tooltip {
+    position: absolute;
+    right: calc(100% + 12px);
+    background: rgba(12, 17, 32, 0.95);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.7rem;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(4px);
+    transition: all 0.2s ease;
+    pointer-events: none;
+  
+    /* arrow pointing right */
+    &::after {
+      content: '';
+      position: absolute;
+      right: -4px;
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+      width: 6px; height: 6px;
+      background: rgba(12, 17, 32, 0.95);
+      border-right: 1px solid var(--border);
+      border-top: 1px solid var(--border);
+    }
+  }

@@ -1,0 +1,39 @@
+
+<section id="about-me">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+  
+    <div class="aboutMe-content">
+      <div class="eyebrow">Full Stack Engineer</div>
+  
+      <h1 class="aboutMe-name">
+        Building<br>
+        <span class="typed-wrap">
+          <span class="typed">{{ typedText }}</span>
+          <span class="cursor-blink">|</span>
+        </span>
+      </h1>
+  
+      <div class="aboutMe-tags">
+        <span *ngFor="let tag of tags" class="tag">{{ tag }}</span>
+      </div>
+  
+      <p class="aboutMe-desc">
+        Crafting high-performance, event-driven architectures with Java &amp; Spring Boot
+        on the backend and Angular on the frontend — shipped on Azure cloud.
+      </p>
+  
+      <div class="aboutMe-cta">
+        <button class="btn-primary" (click)="scrollTo('projects')">View Projects ↗</button>
+        <button class="btn-outline" (click)="scrollTo('contact')">Let's Talk</button>
+      </div>
+    </div>
+  
+    <!-- <div class="aboutMe-stats">
+      <div *ngFor="let stat of stats" class="stat">
+        <div class="stat-num">{{ stat.value }}</div>
+        <div class="stat-label">{{ stat.label }}</div>
+      </div>
+    </div> -->
+  </section>
+  
